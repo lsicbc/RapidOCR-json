@@ -32,8 +32,8 @@
 | -------- | ----------------------------------------- | ------- | ------------ |
 | 检测     | `ch_PP-OCRv5_det_mobile.onnx`            | 4.6 MB  | PP-OCRv5 检测 |
 | 方向分类 | `ch_ppocr_mobile_v2.0_cls_infer.onnx`    | 0.56 MB | PP-OCRv2 分类 |
-| 识别     | `rec_ch_PP-OCRv4_infer.onnx`             | 10.4 MB | PP-OCRv4 识别 |
-| 字典     | `ppocr_keys_v1.txt`                       | 0.03 MB | 6622 字符集  |
+| 识别     | `ch_PP-OCRv5_rec_mobile.onnx`            | 15.9 MB | PP-OCRv5 识别 |
+| 字典     | `ppocrv5_dict.txt`                        | 0.07 MB | 18383 字符集 |
 | 推理引擎 | `onnxruntime.dll` (v1.26.0)               | 14.2 MB | 2025年5月版  |
 
 启动时会显示当前加载的模型信息：
@@ -43,8 +43,8 @@ RapidOCR-json v0.9.0
 Models loaded:
   det: models/ch_PP-OCRv5_det_mobile.onnx
   cls: models/ch_ppocr_mobile_v2.0_cls_infer.onnx
-  rec: models/rec_ch_PP-OCRv4_infer.onnx
-  keys: models/ppocr_keys_v1.txt
+  rec: models/ch_PP-OCRv5_rec_mobile.onnx
+  keys: models/ppocrv5_dict.txt
 OCR init completed.
 ```
 
@@ -95,8 +95,8 @@ ocr.stop()
 | `--models`     | 模型目录地址                         | `models`                              |
 | `--det`        | 检测模型文件名                       | `ch_PP-OCRv5_det_mobile.onnx`        |
 | `--cls`        | 方向分类模型文件名                   | `ch_ppocr_mobile_v2.0_cls_infer.onnx` |
-| `--rec`        | 识别模型文件名                       | `rec_ch_PP-OCRv4_infer.onnx`         |
-| `--keys`       | 字典文件名                           | `ppocr_keys_v1.txt`                   |
+| `--rec`        | 识别模型文件名                       | `ch_PP-OCRv5_rec_mobile.onnx`        |
+| `--keys`       | 字典文件名                           | `ppocrv5_dict.txt`                    |
 | `--numThread`  | 线程数                               | 4                                     |
 | `--padding`    | 预处理白边宽度                       | 50                                    |
 | `--maxSideLen` | 图片长边缩放值（提高大图速度）       | 1024                                  |
@@ -174,8 +174,8 @@ RapidOCR-json/
 ├── models/
 │   ├── ch_PP-OCRv5_det_mobile.onnx       # 检测模型
 │   ├── ch_ppocr_mobile_v2.0_cls_infer.onnx # 分类模型
-│   ├── rec_ch_PP-OCRv4_infer.onnx        # 识别模型
-│   └── ppocr_keys_v1.txt                 # 字符字典
+│   ├── ch_PP-OCRv5_rec_mobile.onnx       # 识别模型
+│   └── ppocrv5_dict.txt                  # 字符字典
 ├── api/
 │   └── python/
 │       ├── RapidOCR_api.py               # Python 封装库
@@ -209,11 +209,10 @@ cmake --build build --config Release --target RapidOcrOnnx
 
 #### v0.9.0 `2026.5.29`
 - 升级 ONNX Runtime 推理引擎至 v1.26.0
-- 默认检测模型升级为 PP-OCRv5 (ch_PP-OCRv5_det_mobile)
-- 默认识别模型升级为 PP-OCRv4 (rec_ch_PP-OCRv4_infer)
-- 启动时显示当前加载的模型信息
-- 适配 Visual Studio 2026 编译
-- 清理发布包体积至 ~22MB
+- 全线升级至 PP-OCRv5 模型 (检测 + 识别，字符集 18383 字)
+- 自动显示当前加载的模型信息
+- 适配 Visual Studio 2026 (v18) 编译
+- 优化发布包体积至 ~22MB
 
 #### v0.2.0 `2023.9.25`
 - 路径识图的key由 `imagePath` 改为 `image_path`

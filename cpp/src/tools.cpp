@@ -24,8 +24,8 @@ namespace tool {
     string modelsDir = "models"; // 模型库目录 
     string modelDetPath = "ch_PP-OCRv5_det_mobile.onnx"; // 默认检测模型
     string modelClsPath = "ch_ppocr_mobile_v2.0_cls_infer.onnx"; // 默认方向分类模型
-    string modelRecPath = "rec_ch_PP-OCRv4_infer.onnx"; // 默认识别模型
-    string keysPath = "ppocr_keys_v1.txt"; // 默认字典 
+    string modelRecPath = "ch_PP-OCRv5_rec_mobile.onnx"; // 默认识别模型
+    string keysPath = "ppocrv5_dict.txt"; // 默认字典 
     int numThread = 4; // 线程数 
     int flagGpu = -1; // 使用的GPU编号，不使用为-1 
     // 热参数，启动后可修改 
