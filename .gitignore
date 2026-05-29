@@ -1,0 +1,33 @@
+# Build artifacts
+cpp/build*/
+cpp/out/
+
+# Archives (already extracted)
+*.7z
+*.zip
+
+# IDE
+.vs/
+*.user
+*.suo
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# Large binary dependencies (not for git)
+cpp/onnxruntime-static/
+cpp/onnxruntime-win-x64-*/
+
+# Debug symbols
+*.pdb
+
+# Temp
+*.tmp
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
